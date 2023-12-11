@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour
 
     [SerializeField] float moveAmount = 10f;
     [SerializeField] float rotationAmount = 20f;
+    float rotationSides = 1f;
 
     Rigidbody rocketRigidbody;
 
@@ -19,24 +20,32 @@ public class Movement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        ProcessMovement();
+        ProcessThrust();
+        ProcessRotation();
     }
 
-    void ProcessMovement()
+    void ProcessThrust()
     {
+        // Thrusting
         if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             rocketRigidbody.AddRelativeForce(Vector3.up * moveAmount, ForceMode.Force);
         } 
-        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+    }
+
+    void ProcessRotation()
+    {
+        // Rotate on the right
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            rocketRigidbody.AddTorque(0, 0, rotationAmount, ForceMode.Force);
+            rocketRigidbody.AddTorque(Vector3.forward * rotationAmount, ForceMode.Force);
         }
+        // Rotate on the left
         else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            rocketRigidbody.AddTorque(0, 0, -1 * rotationAmount, ForceMode.Force);
+            rocketRigidbody.AddTorque(Vector3.forward * -1 * rotationAmount, ForceMode.Force);
         }
     }
 }
