@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Unity.VisualScripting;
@@ -12,6 +12,15 @@ public class Movement : MonoBehaviour
 
 
     Rigidbody rocketRigidbody;
+
+    AudioManager gameAudio;
+
+
+
+    private void Awake()
+    {
+        gameAudio = FindObjectOfType<AudioManager>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +41,18 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             rocketRigidbody.AddRelativeForce(Vector3.up * moveAmount, ForceMode.Force);
+            if (gameAudio.GetSounding() == false)
+            {
+                // khi ấn W và k có âm thanh engine thì sẽ bật tiếng
+                gameAudio.PlayEngineAudio();
+
+            }
+        }
+        else if (!Input.GetKey(KeyCode.W) || !Input.GetKey(KeyCode.UpArrow) && gameAudio.GetSounding() == true)
+        {
+            // nếu k ấn W và đang có âm thanh Engine thì tắt tiếng engine
+            gameAudio.StopAudio();
+
         }
     }
 
@@ -40,17 +61,14 @@ public class Movement : MonoBehaviour
         // Rotate on the right
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            rocketRigidbody.freezeRotation = true; // freeze physics system so we can manually rotate
+
             rocketRigidbody.AddTorque(Vector3.forward * rotationAmount, ForceMode.Force);
-            rocketRigidbody.freezeRotation = false; // unfreeze physics system so we can let unity take over after we r done manually rotating
 
         }
         // Rotate on the left
         else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            rocketRigidbody.freezeRotation = true;
             rocketRigidbody.AddTorque(Vector3.forward * -rotationAmount, ForceMode.Force);
-            rocketRigidbody.freezeRotation = false;
 
         }
 
