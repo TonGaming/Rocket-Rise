@@ -18,7 +18,7 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
-        rocketTransform = FindObjectOfType<Movement>().GetComponent<Transform>();
+        rocketTransform = FindObjectOfType<Player>().GetComponent<Transform>();
         gameAudioSource = GetComponent<AudioSource>();
     }
 
@@ -74,6 +74,7 @@ public class AudioManager : MonoBehaviour
         gameAudioSource.PlayOneShot(engineThrustSFX, engineVolume);
     }
 
+    // update vị trí của âm thanh theo vị trí của tên lửa
     void UpdateAudioPosition()
     {
         transform.position = rocketTransform.position;

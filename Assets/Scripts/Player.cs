@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Movement : MonoBehaviour
+public class Player : MonoBehaviour
 {
 
     [SerializeField] float moveAmount = 10f;
@@ -14,12 +16,13 @@ public class Movement : MonoBehaviour
     Rigidbody rocketRigidbody;
 
     AudioManager gameAudio;
-
+    LevelManager levelManager;
 
 
     private void Awake()
     {
         gameAudio = FindObjectOfType<AudioManager>();
+        levelManager = FindObjectOfType<LevelManager>();
     }
 
     // Start is called before the first frame update
@@ -73,4 +76,22 @@ public class Movement : MonoBehaviour
         }
 
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+            case "Walls":
+
+                levelManager.StartResetLevel();
+                break;
+            case "LandingPad":
+
+                levelManager.StartLoadNextLevel();
+                break;
+
+        }
+    }
+
+    
 }
