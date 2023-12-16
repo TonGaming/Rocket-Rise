@@ -29,9 +29,9 @@ public class LevelManager : MonoBehaviour
 
     // Hàm bắt đầu Coroutine load Level kế, nếu không thì load lại level đầu tiên
 
-    public void StartLoadNextLevel()
+    public void StartNextLevel()
     {
-        StartCoroutine(LoadNextLevel());
+        StartCoroutine(NextLevel());
     }
 
     IEnumerator ResetLevel()
@@ -43,7 +43,7 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(currentSceneIndex);
     }
 
-    IEnumerator LoadNextLevel()
+    IEnumerator NextLevel()
     {
         yield return new WaitForSeconds(loadDelay);
 
@@ -59,4 +59,11 @@ public class LevelManager : MonoBehaviour
             SceneManager.LoadScene(firstSceneIndex);
         }
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    
 }

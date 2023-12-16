@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] float moveAmount = 10f;
     [SerializeField] float rotationAmount = 20f;
 
+    [SerializeField] bool isDead = false;
 
     Rigidbody rocketRigidbody;
 
@@ -28,14 +29,23 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isDead = false;
         rocketRigidbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        ProcessThrust();
-        ProcessRotation();
+        if (!isDead)
+        {
+            ProcessThrust();
+            ProcessRotation();
+
+        }
+        else
+        {
+            return;
+        }
     }
 
     void ProcessThrust()
@@ -84,14 +94,16 @@ public class Player : MonoBehaviour
             case "Walls":
 
                 levelManager.StartResetLevel();
+                isDead = true;
+
                 break;
             case "LandingPad":
 
-                levelManager.StartLoadNextLevel();
+                levelManager.StartNextLevel();
                 break;
 
         }
     }
 
-    
+
 }
