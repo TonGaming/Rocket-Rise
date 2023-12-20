@@ -154,7 +154,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6579675559947313484}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 62.020004, y: 7.7299995, z: 0.9599838}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -272,3 +272,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   engineThrustSFX: {fileID: 8300000, guid: ba856b769719eb246a46dd86c6d0f04d, type: 3}
   engineVolume: 0.358
+  successSFX: {fileID: 8300000, guid: d95a29bc4e21d57468796612a00e69c7, type: 3}
+  successVolume: 1
+  explosionSFX: {fileID: 8300000, guid: 0d67d536b0b4d424a947e298a0f88ce3, type: 3}
+  explosionVolume: 1
+  landingPad: {fileID: 0}

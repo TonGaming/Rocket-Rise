@@ -9,26 +9,38 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioClip engineThrustSFX;
     [SerializeField][Range(0, 1)] float engineVolume = 1f;
 
+    [Header("Landing Pad Success SFX")]
+    [SerializeField] AudioClip successSFX;
+    [SerializeField][Range(0, 1)] float successVolume = 1f;
+
+    [Header("Explosion SFX")]
+    [SerializeField] AudioClip explosionSFX;
+    [SerializeField][Range(0, 1)] float explosionVolume = 1f;
+
 
     Transform rocketTransform;
+
     AudioSource gameAudioSource;
 
+    [Header("Locations")]
+    [SerializeField] GameObject landingPad;
 
     private bool isSounding;
 
     void Awake()
     {
         rocketTransform = FindObjectOfType<Player>().GetComponent<Transform>();
+        
         gameAudioSource = GetComponent<AudioSource>();
-    }
 
-    // Start is called before the first frame update
-    void Start()
-    {
         
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+
+    }
+
     void Update()
     {
         CheckSounding();
@@ -48,36 +60,46 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    // Get trạng thái biến bool isSounding
     public bool GetSounding()
     {
         return isSounding;
     }
 
     // hàm dùng chung để bật âm thanh tuy nhiên khá là tù vì làm ntn thì k ngắt được âm thanh một khi đã bậts
-    public void PlayAudioClipOnRocket(AudioClip clip, float volume)
+    private void PlayAudioClip(AudioClip clip, Vector3 audioLocation, float volume)
     {
-        
-        Vector3 rocketPosition = rocketTransform.position;
-
-        AudioSource.PlayClipAtPoint(clip, rocketPosition, volume);
+        // không thể huỷ PlayClipAtPoint một khi đã chạy 
+        AudioSource.PlayClipAtPoint(clip, audioLocation, volume);
     }
 
-    // ngắt âm thanh
-    public void StopAudio()
+    // ngắt âm thanh động cơ tên lửa
+    public void StopEngineAudio()
     {
         gameAudioSource.Stop();
     }
-    // chạy âm thanh
+
+    // chạy âm thanh tên lửa
     public void PlayEngineAudio()
     {
-        //PlayAudioClipOnRocket(engineThrustSFX, engineVolume);
+        //PlayAudioClip(engineThrustSFX, engineVolume);
         gameAudioSource.PlayOneShot(engineThrustSFX, engineVolume);
     }
 
     // update vị trí của âm thanh theo vị trí của tên lửa
     void UpdateAudioPosition()
     {
-        transform.position = rocketTransform.position;
+        gameAudioSource.transform.position = rocketTransform.position;
     }
 
+    // hàm chạy âm thanh success
+    public void PlaySuccessAudio()
+    {
+        PlayAudioClip(successSFX, landingPad.transform.position, successVolume);
+    }
+
+    public void PlayExplosionAudio()
+    {
+        PlayAudioClip(explosionSFX, rocketTransform.position, explosionVolume);
+    }
 }

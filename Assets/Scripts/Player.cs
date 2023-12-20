@@ -13,11 +13,14 @@ public class Player : MonoBehaviour
     [SerializeField] float rotationAmount = 20f;
 
     [SerializeField] bool isDead = false;
+    [SerializeField] bool isSuccess = false;
+
 
     Rigidbody rocketRigidbody;
 
     AudioManager gameAudio;
     LevelManager levelManager;
+
 
 
     private void Awake()
@@ -42,10 +45,11 @@ public class Player : MonoBehaviour
             ProcessRotation();
 
         }
-        else
+        else if (isDead)
         {
-            return;
+            gameAudio.StopEngineAudio();
         }
+
     }
 
     void ProcessThrust()
@@ -53,18 +57,21 @@ public class Player : MonoBehaviour
         // Thrusting
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
+            // di chuyển
             rocketRigidbody.AddRelativeForce(Vector3.up * moveAmount, ForceMode.Force);
-            if (gameAudio.GetSounding() == false)
+
+            if (gameAudio.GetSounding() == false && !isDead)
             {
                 // khi ấn W và k có âm thanh engine thì sẽ bật tiếng
                 gameAudio.PlayEngineAudio();
 
             }
+
         }
         else if (!Input.GetKey(KeyCode.W) || !Input.GetKey(KeyCode.UpArrow) && gameAudio.GetSounding() == true)
         {
             // nếu k ấn W và đang có âm thanh Engine thì tắt tiếng engine
-            gameAudio.StopAudio();
+            gameAudio.StopEngineAudio();
 
         }
     }
@@ -87,23 +94,27 @@ public class Player : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+
+
+    // Getter Setter
+    public bool GetIsDeadStatus()
     {
-        switch (collision.gameObject.tag)
-        {
-            case "Walls":
-
-                levelManager.StartResetLevel();
-                isDead = true;
-
-                break;
-            case "LandingPad":
-
-                levelManager.StartNextLevel();
-                break;
-
-        }
+        return isDead;
     }
 
+    public void SetIsDeadStatus(bool isDeadValue)
+    {
+        isDead = isDeadValue;
+    }
+
+    public bool GetIsSuccessStatus()
+    {
+        return isSuccess;
+    }
+
+    public void SetIsSuccess(bool isSuccessValue)
+    {
+        isSuccess = isSuccessValue;
+    }
 
 }

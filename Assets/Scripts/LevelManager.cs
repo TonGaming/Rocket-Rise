@@ -7,18 +7,19 @@ public class LevelManager : MonoBehaviour
 {
     [SerializeField] float loadDelay = 1.5f;
 
-    int firstSceneIndex = 0;
+    // có scene Menu là scene 0 r nên index của level 1 là 1 
+    int firstSceneIndex = 1;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     // Hàm bắt đầu Coroutine Reset Level
@@ -47,14 +48,17 @@ public class LevelManager : MonoBehaviour
     {
         yield return new WaitForSeconds(loadDelay);
 
-        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        int nextSceneIndex = currentSceneIndex + 1;
+
         // nếu chưa làm menu intro và outro thì k cần trừ, nếu làm 1 menu thôi thì -1, làm 2 menu thì trừ 2
-        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings )
+        if (currentSceneIndex < SceneManager.sceneCountInBuildSettings - 1)
         {
+
             SceneManager.LoadScene(nextSceneIndex);
-        } 
-        else
+        }
+        else if (currentSceneIndex == SceneManager.sceneCountInBuildSettings - 1)
         {
             SceneManager.LoadScene(firstSceneIndex);
         }
@@ -65,5 +69,5 @@ public class LevelManager : MonoBehaviour
         Application.Quit();
     }
 
-    
+
 }
