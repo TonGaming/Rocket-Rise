@@ -55,7 +55,6 @@ public class LevelManager : MonoBehaviour
         // nếu chưa làm menu intro và outro thì k cần trừ, nếu làm 1 menu thôi thì -1, làm 2 menu thì trừ 2
         if (currentSceneIndex < SceneManager.sceneCountInBuildSettings - 1)
         {
-
             SceneManager.LoadScene(nextSceneIndex);
         }
         else if (currentSceneIndex == SceneManager.sceneCountInBuildSettings - 1)

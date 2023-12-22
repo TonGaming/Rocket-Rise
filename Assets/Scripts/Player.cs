@@ -68,7 +68,8 @@ public class Player : MonoBehaviour
             }
 
         }
-        else if (!Input.GetKey(KeyCode.W) || !Input.GetKey(KeyCode.UpArrow) && gameAudio.GetSounding() == true)
+        else if ((!Input.GetKey(KeyCode.W) || !Input.GetKey(KeyCode.UpArrow) || isDead == true) 
+            && gameAudio.GetSounding() == true)
         {
             // nếu k ấn W và đang có âm thanh Engine thì tắt tiếng engine
             gameAudio.StopEngineAudio();

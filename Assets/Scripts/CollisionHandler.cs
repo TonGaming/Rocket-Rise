@@ -15,44 +15,66 @@ public class CollisionHandler : MonoBehaviour
         gameAudio = FindObjectOfType<AudioManager>();
     }
 
-    // Collision Handler
+    // Xử lý sự kiện xảy ra khi có va chạm
     private void OnCollisionEnter(Collision collision)
     {
         switch (collision.gameObject.tag)
         {
             case "Walls":
-                // nếu isDead = false
-                if (!player.GetIsDeadStatus())
+                // nếu isDead = false (vẫn sống)
+                if (!player.GetIsDeadStatus() && !player.GetIsSuccessStatus())
                 {
-                    // reset level sau 1 khoảng tgian nhất định
-                    levelManager.StartResetLevel();
-
-                    // bật âm thanh nổ tàu
-                    gameAudio.PlayExplosionAudio();
-
-                    // set trạng thái isDead thành true
-                    player.SetIsDeadStatus(true);
+                    StartCrashSequence();
                 }
 
                 break;
 
             case "LandingPad":
 
-                // nếu tàu vẫn chưa success
-                if (!player.GetIsSuccessStatus())
+                // nếu tàu vẫn chưa success và vẫn sống
+                if (!player.GetIsSuccessStatus() && !player.GetIsDeadStatus())
                 {
-                    // bdau load level mới sau 2s
-                    levelManager.StartNextLevel();
-
-                    // bật âm thanh qua màn
-                    gameAudio.PlaySuccessAudio();
-
-                    // chỉnh lại trạng thái isSuccess sau khi đã chạm vào LandingPad
-                    player.SetIsSuccess(true);
+                    StartSuccessSquence();
                 }
 
                 break;
 
         }
+    }
+
+    void StartSuccessSquence()
+    {
+        
+        // bdau load level mới sau 2s
+        levelManager.StartNextLevel();
+
+        // tắt hết âm thanh đi để bật âm thanh success
+        gameAudio.StopEngineAudio();
+
+        // bật âm thanh qua màn
+        gameAudio.PlaySuccessAudio();
+
+        // chỉnh lại trạng thái isSuccess sau khi đã chạm vào LandingPad
+        player.SetIsSuccess(true);
+
+        // khoá di chuyển
+        player.SetIsDeadStatus(true);
+    }
+
+    void StartCrashSequence()
+    {
+        // reset level sau 1 khoảng tgian nhất định
+        levelManager.StartResetLevel();
+
+        // tắt hết âm thanh đi để bật âm thanh success
+        gameAudio.StopEngineAudio();
+
+        // bật âm thanh nổ tàu
+        gameAudio.PlayExplosionAudio();
+
+        // set trạng thái isDead thành true
+        player.SetIsDeadStatus(true);
+
+
     }
 }
