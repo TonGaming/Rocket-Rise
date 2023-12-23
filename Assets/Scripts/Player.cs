@@ -8,12 +8,21 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-
+    [Header("Movement Section")]
     [SerializeField] float moveAmount = 10f;
     [SerializeField] float rotationAmount = 20f;
 
+    [Header("Status Section")]
     [SerializeField] bool isDead = false;
     [SerializeField] bool isSuccess = false;
+
+    [Header("Particles Effects Section")]
+    [SerializeField] ParticleSystem mainEnginePE;
+    [SerializeField] ParticleSystem leftSidePE;
+    [SerializeField] ParticleSystem rightSidePE;
+    [SerializeField] ParticleSystem explosionPE;
+    [SerializeField] ParticleSystem successPE;
+
 
 
     Rigidbody rocketRigidbody;
@@ -60,6 +69,10 @@ public class Player : MonoBehaviour
             // di chuyển
             rocketRigidbody.AddRelativeForce(Vector3.up * moveAmount, ForceMode.Force);
 
+            // bật Particle Effects
+            mainEnginePE.Play();
+
+            // bật âm thanh
             if (gameAudio.GetSounding() == false && !isDead)
             {
                 // khi ấn W và k có âm thanh engine thì sẽ bật tiếng
@@ -67,13 +80,17 @@ public class Player : MonoBehaviour
 
             }
 
+
+
         }
-        else if ((!Input.GetKey(KeyCode.W) || !Input.GetKey(KeyCode.UpArrow) || isDead == true) 
+        else if ((!Input.GetKey(KeyCode.W) || !Input.GetKey(KeyCode.UpArrow) || isDead == true)
             && gameAudio.GetSounding() == true)
         {
             // nếu k ấn W và đang có âm thanh Engine thì tắt tiếng engine
             gameAudio.StopEngineAudio();
 
+            // Dừng PE lại khi nhả phím 
+            mainEnginePE.Stop();
         }
     }
 
@@ -82,20 +99,39 @@ public class Player : MonoBehaviour
         // Rotate on the right
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-
+            // Xử lý quay phải
             rocketRigidbody.AddTorque(Vector3.forward * rotationAmount, ForceMode.Force);
 
+            // Bật Particle Effects bên trái (đẩy sang phải)
+            leftSidePE.Play();
+        }
+        else if (!Input.GetKey(KeyCode.D) || !Input.GetKey(KeyCode.RightArrow))
+        {
+            leftSidePE.Stop();
         }
         // Rotate on the left
-        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             rocketRigidbody.AddTorque(Vector3.forward * -rotationAmount, ForceMode.Force);
 
+            rightSidePE.Play();
+        }
+        else if (!Input.GetKey(KeyCode.A) || !Input.GetKey(KeyCode.LeftArrow))
+        {
+            rightSidePE.Stop();
         }
 
     }
 
+    public void ActivateSuccessPE()
+    {
+        successPE.Play();
+    }
 
+    public void ActivateExplosionPE()
+    {
+        explosionPE.Play();
+    }
 
     // Getter Setter
     public bool GetIsDeadStatus()

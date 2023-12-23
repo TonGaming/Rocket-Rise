@@ -272,8 +272,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   engineThrustSFX: {fileID: 8300000, guid: ba856b769719eb246a46dd86c6d0f04d, type: 3}
   engineVolume: 0.358
-  successSFX: {fileID: 8300000, guid: d95a29bc4e21d57468796612a00e69c7, type: 3}
+  successSFX: {fileID: 8300000, guid: af43bb04923f3ff47b4c97fdd3d247a1, type: 3}
   successVolume: 1
-  explosionSFX: {fileID: 8300000, guid: 0d67d536b0b4d424a947e298a0f88ce3, type: 3}
+  explosionSFX: {fileID: 8300000, guid: 4e848948817bf84478eceb7f84348ac6, type: 3}
   explosionVolume: 1
   landingPad: {fileID: 0}

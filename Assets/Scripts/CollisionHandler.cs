@@ -59,6 +59,9 @@ public class CollisionHandler : MonoBehaviour
 
         // khoá di chuyển
         player.SetIsDeadStatus(true);
+
+        // Chạy Particle Effects Explosion 
+        player.ActivateSuccessPE();
     }
 
     void StartCrashSequence()
@@ -75,6 +78,7 @@ public class CollisionHandler : MonoBehaviour
         // set trạng thái isDead thành true
         player.SetIsDeadStatus(true);
 
-
+        // Chạy Particle Effects Explosion
+        player.ActivateExplosionPE();
     }
 }
