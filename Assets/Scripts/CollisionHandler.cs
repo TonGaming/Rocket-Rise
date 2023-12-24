@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class CollisionHandler : MonoBehaviour
 {
+    // Status
+    bool godMode;
+
+    // Scripts
     Player player;
     LevelManager levelManager;
     AudioManager gameAudio;
+
 
     private void Awake()
     {
@@ -15,36 +20,45 @@ public class CollisionHandler : MonoBehaviour
         gameAudio = FindObjectOfType<AudioManager>();
     }
 
+    // Setter dành cho godMode
+    public void SetGodMode(bool GodModeValue)
+    {
+        godMode = GodModeValue;
+    }
+
     // Xử lý sự kiện xảy ra khi có va chạm
     private void OnCollisionEnter(Collision collision)
     {
-        switch (collision.gameObject.tag)
+        if (godMode == false)
         {
-            case "Walls":
-                // nếu isDead = false (vẫn sống)
-                if (!player.GetIsDeadStatus() && !player.GetIsSuccessStatus())
-                {
-                    StartCrashSequence();
-                }
+            switch (collision.gameObject.tag)
+            {
+                case "Walls":
+                    // nếu isDead = false (vẫn sống)
+                    if (!player.GetIsDeadStatus() && !player.GetIsSuccessStatus())
+                    {
+                        StartCrashSequence();
+                    }
 
-                break;
+                    break;
 
-            case "LandingPad":
+                case "LandingPad":
 
-                // nếu tàu vẫn chưa success và vẫn sống
-                if (!player.GetIsSuccessStatus() && !player.GetIsDeadStatus())
-                {
-                    StartSuccessSquence();
-                }
+                    // nếu tàu vẫn chưa success và vẫn sống
+                    if (!player.GetIsSuccessStatus() && !player.GetIsDeadStatus())
+                    {
+                        StartSuccessSquence();
+                    }
 
-                break;
+                    break;
 
+            }
         }
     }
 
     void StartSuccessSquence()
     {
-        
+
         // bdau load level mới sau 2s
         levelManager.StartNextLevel();
 

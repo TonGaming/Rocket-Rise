@@ -447,7 +447,7 @@ Transform:
   m_GameObject: {fileID: 1793134515}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 32.6, y: 6.2961, z: 1.9}
+  m_LocalPosition: {x: 32.6, y: 17.6, z: 1.9}
   m_LocalScale: {x: 7.141572, y: 46.726727, z: 17.715515}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -639,6 +639,58 @@ PrefabInstance:
     - target: {fileID: 1475570102439711516, guid: 0270e8e867435bc48ad87868a6cf22e6, type: 3}
       propertyPath: m_Name
       value: Rocket
+      objectReference: {fileID: 0}
+    - target: {fileID: 2260556994169849026, guid: 0270e8e867435bc48ad87868a6cf22e6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2601454489286998865, guid: 0270e8e867435bc48ad87868a6cf22e6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2601454489286998865, guid: 0270e8e867435bc48ad87868a6cf22e6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055965679820944651, guid: 0270e8e867435bc48ad87868a6cf22e6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760301641367493565, guid: 0270e8e867435bc48ad87868a6cf22e6, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.ctime2
+      value: 25250
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760301641367493565, guid: 0270e8e867435bc48ad87868a6cf22e6, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.ctime3
+      value: 44525
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760301641367493565, guid: 0270e8e867435bc48ad87868a6cf22e6, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.ctime4
+      value: 58982
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760301641367493565, guid: 0270e8e867435bc48ad87868a6cf22e6, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key2.g
+      value: 0.5453615
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760301641367493565, guid: 0270e8e867435bc48ad87868a6cf22e6, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key3.g
+      value: 0.8357576
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760301641367493565, guid: 0270e8e867435bc48ad87868a6cf22e6, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.m_ColorSpace
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444694485505633058, guid: 0270e8e867435bc48ad87868a6cf22e6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6400522985839186294, guid: 0270e8e867435bc48ad87868a6cf22e6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8601754870186145487, guid: 0270e8e867435bc48ad87868a6cf22e6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

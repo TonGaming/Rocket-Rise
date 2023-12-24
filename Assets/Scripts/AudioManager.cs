@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -30,10 +29,10 @@ public class AudioManager : MonoBehaviour
     void Awake()
     {
         rocketTransform = FindObjectOfType<Player>().GetComponent<Transform>();
-        
+
         gameAudioSource = GetComponent<AudioSource>();
 
-        
+
     }
 
     void Start()
@@ -43,21 +42,7 @@ public class AudioManager : MonoBehaviour
 
     void Update()
     {
-        CheckSounding();
         UpdateAudioPosition();
-    }
-
-    void CheckSounding()
-    {
-        if (gameAudioSource.isPlaying)
-        {
-            isSounding = true;
-        }
-        else if (!gameAudioSource.isPlaying)
-        {
-            isSounding = false;
-
-        }
     }
 
     // Get trạng thái biến bool isSounding
@@ -73,23 +58,29 @@ public class AudioManager : MonoBehaviour
         AudioSource.PlayClipAtPoint(clip, audioLocation, volume);
     }
 
+    // update vị trí của âm thanh theo vị trí của tên lửa
+    void UpdateAudioPosition()
+    {
+        gameAudioSource.transform.position = rocketTransform.position;
+    }
+
     // ngắt âm thanh động cơ tên lửa
     public void StopEngineAudio()
     {
-        gameAudioSource.Stop();
+        if (gameAudioSource.isPlaying)
+        {
+            gameAudioSource.Stop();
+        }
     }
 
     // chạy âm thanh tên lửa
     public void PlayEngineAudio()
     {
-        //PlayAudioClip(engineThrustSFX, engineVolume);
-        gameAudioSource.PlayOneShot(engineThrustSFX, engineVolume);
-    }
-
-    // update vị trí của âm thanh theo vị trí của tên lửa
-    void UpdateAudioPosition()
-    {
-        gameAudioSource.transform.position = rocketTransform.position;
+        if (!gameAudioSource.isPlaying)
+        {
+            //PlayAudioClip(engineThrustSFX, engineVolume);
+            gameAudioSource.PlayOneShot(engineThrustSFX, engineVolume);
+        }
     }
 
     // hàm chạy âm thanh success
