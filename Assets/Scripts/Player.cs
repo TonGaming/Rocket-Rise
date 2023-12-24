@@ -174,9 +174,10 @@ public class Player : MonoBehaviour
             gameAudio.PlaySuccessAudio();
 
             ActivateSuccessPE();
+            return;
         }
         // if press P, disable collisions (using foreach)
-        else if (Input.GetKey(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             NoClipSwitch = !NoClipSwitch;
 
