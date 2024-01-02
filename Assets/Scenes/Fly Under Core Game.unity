@@ -340,7 +340,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7681660926119217352, guid: 4d5f79fff352dad40a7ee4ae736e425d, type: 3}
       propertyPath: m_text
-      value: 'Level 1 - Fly Under
+      value: 'Fly under - Core game
 
 '
       objectReference: {fileID: 0}
