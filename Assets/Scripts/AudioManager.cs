@@ -16,6 +16,10 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioClip explosionSFX;
     [SerializeField][Range(0, 1)] float explosionVolume = 1f;
 
+    [Header("Crumbling Rocks SFX")]
+    [SerializeField] AudioClip rocksSFX;
+    [SerializeField][Range(0, 1)] float rocksVolume = 1;
+
 
     Transform rocketTransform;
 
@@ -32,7 +36,7 @@ public class AudioManager : MonoBehaviour
 
         gameAudioSource = GetComponent<AudioSource>();
 
-
+        
     }
 
     void Start()
@@ -89,8 +93,17 @@ public class AudioManager : MonoBehaviour
         PlayAudioClip(successSFX, landingPad.transform.position, successVolume);
     }
 
+    // chạy âm thanh nổ
     public void PlayExplosionAudio()
     {
         PlayAudioClip(explosionSFX, rocketTransform.position, explosionVolume);
     }
+
+    // chạy âm thanh đá rơi
+    public void PlayRocksAudio()
+    {
+        PlayAudioClip(rocksSFX, rocketTransform.position, rocksVolume);
+    }
+
+
 }

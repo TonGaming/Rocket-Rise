@@ -5,7 +5,7 @@ using UnityEngine;
 public class CollisionHandler : MonoBehaviour
 {
     // Status
-    bool godMode;
+    [SerializeField] bool godMode;
 
     // Scripts
     Player player;
