@@ -102,7 +102,7 @@ public class AudioManager : MonoBehaviour
     // chạy âm thanh đá rơi
     public void PlayRocksAudio()
     {
-        PlayAudioClip(rocksSFX, rocketTransform.position, rocksVolume);
+        PlayAudioClip(rocksSFX, Camera.main.transform.position, rocksVolume);
     }
 
 

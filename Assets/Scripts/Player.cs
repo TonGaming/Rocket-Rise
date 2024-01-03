@@ -26,9 +26,7 @@ public class Player : MonoBehaviour
     Rigidbody rocketRigidbody;
 
     AudioManager gameAudio;
-
     LevelManager gameLevels;
-
     CollisionHandler gameCollisions;
 
 
@@ -70,7 +68,6 @@ public class Player : MonoBehaviour
 
         CheatKeys();
     }
-
 
 
     void ProcessThrust()

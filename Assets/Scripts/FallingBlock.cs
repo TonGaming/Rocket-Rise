@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FallingBlock : MonoBehaviour
@@ -8,15 +9,21 @@ public class FallingBlock : MonoBehaviour
     [SerializeField] float dropDelay = 2f;
     [SerializeField] Light trapsLightSource;
 
+    [SerializeField] float fallingForce = 10f;
+    [SerializeField] bool isFalling;
+
     Rigidbody trapsRigidbody;
+    BoxCollider trapsCollider;
 
     AudioManager gameAudio;
-    
+
 
     private void Awake()
     {
         gameAudio = FindObjectOfType<AudioManager>();
+
         trapsRigidbody = GetComponent<Rigidbody>();
+        trapsCollider = GetComponent<BoxCollider>();
     }
 
     private void Start()
@@ -24,45 +31,46 @@ public class FallingBlock : MonoBehaviour
         trapsRigidbody.useGravity = false;
     }
 
-    private void Update()
+    private void OnCollisionEnter(Collision other)
     {
-        CheckForPlayer();
-    }
-
-    private void CheckForPlayer()
-    {
-        
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            StartCoroutine( StartCrumblingRocks());
-            Debug.Log("đã chạm vào player rồi");
-        } 
+            Debug.Log("Đã nhận được player");
+
+            RockSlide();
+
+            isFalling = true;
+        }
     }
+
+    private void RockSlide()
+    {
+        StartCoroutine(StartCrumblingRocks());
+    }
+
 
     IEnumerator StartCrumblingRocks()
     {
-        // bật âm thanh đá rơi
-        gameAudio.PlayRocksAudio();
+        if (isFalling == false)
+        {
 
-        // chuyển màu cái đèn đá
-        trapsLightSource.color = Color.red;
+            // bật âm thanh đá rơi
+            gameAudio.PlayRocksAudio();
 
-        yield return new WaitForSecondsRealtime(dropDelay);
+            // chuyển màu cái đèn đá
+            trapsLightSource.color = Color.red;
 
-        ActivateFallingTraps();
+            yield return new WaitForSecondsRealtime(dropDelay);
+
+            ActivateFallingTraps();
+
+
+        }
     }
 
     private void ActivateFallingTraps()
     {
         trapsRigidbody.useGravity = true;
-    }
-
-    public Vector3 GetRocksPosition()
-    {
-        return transform.position;
+        trapsRigidbody.AddForce(Vector3.down * fallingForce, ForceMode.Impulse);
     }
 }
