@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: b91ad2d023256844da16d3a84c6ae158
   - enabled: 1
-    path: Assets/Scenes/Fly Over.unity
+    path: Assets/Scenes/Fly Over demo.unity
     guid: 777a41e9ba225614397aba50aec85ef0
   - enabled: 1
     path: Assets/Scenes/Fly Under Core Game.unity

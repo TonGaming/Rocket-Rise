@@ -56,6 +56,9 @@ public class PatrollingBlock : MonoBehaviour
 
     void CalculatingSineWave(Vector3 movementVector)
     {
+        if (period > Mathf.Epsilon)
+        {
+
         // số vòng đã lặp = thời gian đã trôi qua chia cho khoảng thời gian quay hết 1 vòng sine
         cycles = Time.time / period;
 
@@ -72,6 +75,8 @@ public class PatrollingBlock : MonoBehaviour
 
         // vị trí mới sau khi di chuyển = khoảng cách sau khi di chuyển được + với vị trí ban đầu
         transform.position = offset + startingPosition;
+        }
+        else { return;  }
     }
 
     void FrontMovement()

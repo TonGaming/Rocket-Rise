@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1325236608326053006}
   - component: {fileID: 8485193314275723957}
   - component: {fileID: 7972990315543480652}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rocket
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,6 +47,7 @@ Transform:
   - {fileID: 3334522647155818416}
   - {fileID: 2318222853515536042}
   - {fileID: 7718996827821664217}
+  - {fileID: 4740573834133935092}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1325236608326053006
@@ -61,6 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c7838e83a4315742b04cf31a0e3e4f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  godMode: 0
 --- !u!114 &8485193314275723957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,8 +75,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e653bd73159380345b1339541cde8dec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveAmount: 20
-  rotationAmount: 20
+  moveAmount: 15
+  rotationAmount: 12
   isDead: 1
   isSuccess: 0
   mainEnginePE: {fileID: 2487602588006706402}
@@ -107,8 +109,102 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 8
-  m_CollisionDetection: 0
+  m_Constraints: 56
+  m_CollisionDetection: 1
+--- !u!1 &1516315375575074049
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4740573834133935092}
+  - component: {fileID: 6525914540250077036}
+  m_Layer: 6
+  m_Name: Spot Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4740573834133935092
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516315375575074049}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.9997619, z: -0.021823682, w: 0}
+  m_LocalPosition: {x: 0.3960012, y: -1.04, z: 10.030001}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 664143856074131526}
+  m_LocalEulerAnglesHint: {x: -2.501, y: -180, z: 0}
+--- !u!108 &6525914540250077036
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516315375575074049}
+  m_Enabled: 1
+  serializedVersion: 10
+  m_Type: 0
+  m_Shape: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 4
+  m_Range: 20
+  m_SpotAngle: 37.43
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1 &1633275341093825752
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,7 +217,7 @@ GameObject:
   - component: {fileID: 4104049352112739150}
   - component: {fileID: 522878343590621701}
   - component: {fileID: 6235222468788378673}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,7 +322,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7718996827821664217}
   - component: {fileID: 5432609396663225442}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rocket Flashlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,7 +338,7 @@ Transform:
   m_GameObject: {fileID: 3577632234537322439}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -3.02, z: 0}
+  m_LocalPosition: {x: 0.39, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -260,10 +356,10 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 20
-  m_Range: 18.6
-  m_SpotAngle: 47.39
-  m_InnerSpotAngle: 21.80208
+  m_Intensity: 40
+  m_Range: 20
+  m_SpotAngle: 40
+  m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -322,7 +418,7 @@ GameObject:
   - component: {fileID: 3983643043813815437}
   - component: {fileID: 6613754318870616505}
   - component: {fileID: 8482237625028127242}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RocketTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,7 +523,7 @@ GameObject:
   - component: {fileID: 1303129642920282515}
   - component: {fileID: 4195137605952089708}
   - component: {fileID: 4444694485505633058}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RocketTail1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -532,7 +628,7 @@ GameObject:
   - component: {fileID: 668992755903818222}
   - component: {fileID: 9025445585021536553}
   - component: {fileID: 2179008277614253515}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RocketBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -637,7 +733,7 @@ GameObject:
   - component: {fileID: 6182890557216472800}
   - component: {fileID: 7728000164938570988}
   - component: {fileID: 3055965679820944651}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -744,7 +840,7 @@ GameObject:
   - component: {fileID: 5720602443690723587}
   - component: {fileID: 8704819383881324071}
   - component: {fileID: 6400522985839186294}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RocketTail1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -849,7 +945,7 @@ GameObject:
   - component: {fileID: 2631284925009208810}
   - component: {fileID: 7325024125353716488}
   - component: {fileID: 7440875958443743413}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -954,7 +1050,7 @@ GameObject:
   - component: {fileID: 3981523691976267272}
   - component: {fileID: 3877868896972554581}
   - component: {fileID: 8601754870186145487}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RocketTail1 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1059,7 +1155,7 @@ GameObject:
   - component: {fileID: 4310756677872963541}
   - component: {fileID: 6610147850589565084}
   - component: {fileID: 2260556994169849026}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1164,6 +1260,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Explosion Particles
       objectReference: {fileID: 0}
+    - target: {fileID: 1469142659871422, guid: ab79a37535b979f48b6de56e3a0a5cb0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4436899185823514, guid: ab79a37535b979f48b6de56e3a0a5cb0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.421
@@ -1259,6 +1359,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainEngineParticles
       objectReference: {fileID: 0}
+    - target: {fileID: 1113205305641416, guid: a3553fd250eb92d4091bebde350c6739, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4940884351362868, guid: a3553fd250eb92d4091bebde350c6739, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -1353,6 +1457,10 @@ PrefabInstance:
     - target: {fileID: 1664836844622050, guid: 62198a3a5dbb64a4f9e1618929224faa, type: 3}
       propertyPath: m_Name
       value: Success Particles
+      objectReference: {fileID: 0}
+    - target: {fileID: 1664836844622050, guid: 62198a3a5dbb64a4f9e1618929224faa, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4100699973242056, guid: 62198a3a5dbb64a4f9e1618929224faa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1469,6 +1577,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RightSideThruster
       objectReference: {fileID: 0}
+    - target: {fileID: 765908706338028246, guid: 27917c010cc58c745976312927e3961a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 771087676723270698, guid: 27917c010cc58c745976312927e3961a, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -1567,6 +1679,10 @@ PrefabInstance:
     - target: {fileID: 765908706338028246, guid: d4b06ebeeaf0ac044aeed997d98443c2, type: 3}
       propertyPath: m_Name
       value: LeftSideThrusters
+      objectReference: {fileID: 0}
+    - target: {fileID: 765908706338028246, guid: d4b06ebeeaf0ac044aeed997d98443c2, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 771087676723270698, guid: d4b06ebeeaf0ac044aeed997d98443c2, type: 3}
       propertyPath: m_LocalScale.x
