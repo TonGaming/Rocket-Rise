@@ -13321,7 +13321,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7681660926119217352, guid: 4d5f79fff352dad40a7ee4ae736e425d, type: 3}
       propertyPath: m_text
-      value: 'Level 3 - fly through
+      value: 'Level 3 - Fly Through
 
 '
       objectReference: {fileID: 0}
