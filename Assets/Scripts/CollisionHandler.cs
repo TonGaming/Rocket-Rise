@@ -34,10 +34,25 @@ public class CollisionHandler : MonoBehaviour
             switch (collision.gameObject.tag)
             {
                 case "Walls":
-                    // nếu isDead = false (vẫn sống)
-                    if (!player.GetIsDeadStatus() && !player.GetIsSuccessStatus())
+                    // nếu isDead = false (vẫn sống) và không bị thương thì -> cho isHurt = true
+                    if (!player.GetIsDeadStatus() && !player.GetIsHurtStatus())
+                    {
+                        player.SetIsHurtStatus(true);
+
+                        // bật âm thanh nổ tàu
+                        gameAudio.PlayExplosionAudio();
+
+                        // Chạy Particle Effects Explosion
+                        player.ActivateExplosionPE();
+
+                        Debug.Log("Đã bị thương");
+                    }
+                    // nếu isDead = false và bị thương(isHurt = true) thì cho chết
+                    else if (!player.GetIsDeadStatus() && player.GetIsHurtStatus())
                     {
                         StartCrashSequence();
+
+                        Debug.Log("đã chết");
                     }
 
                     break;

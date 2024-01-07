@@ -5,11 +5,14 @@ public class Player : MonoBehaviour
 {
     [Header("Movement Section")]
     [SerializeField] float moveAmount = 10f;
+    [SerializeField] float moveWhenHurt = 5f;
     [SerializeField] float rotationAmount = 20f;
 
     [Header("Status Section")]
     [SerializeField] bool isDead = false;
     [SerializeField] bool isSuccess = false;
+    [SerializeField] bool isHurt = false;
+
 
     // khai báo biến bool để làm switch
     bool NoClipSwitch;
@@ -42,7 +45,7 @@ public class Player : MonoBehaviour
     {
         NoClipSwitch = false;
         isDead = false;
-        
+
         rocketRigidbody = GetComponent<Rigidbody>();
 
         gameAudio.StopEngineAudio();
@@ -96,17 +99,27 @@ public class Player : MonoBehaviour
 
     private void StartThrusting()
     {
-        // di chuyển
-        rocketRigidbody.AddRelativeForce(Vector3.up * moveAmount, ForceMode.Force);
+        if (isHurt == false)
+        {
+
+            // di chuyển
+            rocketRigidbody.AddRelativeForce(Vector3.up * moveAmount, ForceMode.Force);
+
+        }
+        else if (isHurt == true)
+        {
+            rocketRigidbody.AddRelativeForce(Vector3.up * moveWhenHurt, ForceMode.Force);
+
+        }
 
         // bật Particle Effects
         if (!mainEnginePE.isPlaying)
-        {
-            mainEnginePE.Play();
-        }
+            {
+                mainEnginePE.Play();
+            }
 
-        // khi ấn W và k có âm thanh engine thì sẽ bật tiếng
-        gameAudio.PlayEngineAudio();
+            // khi ấn W và k có âm thanh engine thì sẽ bật tiếng
+            gameAudio.PlayEngineAudio();
 
 
     }
@@ -184,7 +197,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    
+
 
     public void ActivateSuccessPE()
     {
@@ -200,6 +213,16 @@ public class Player : MonoBehaviour
     public bool GetIsDeadStatus()
     {
         return isDead;
+    }
+
+    public bool GetIsHurtStatus()
+    {
+        return isHurt;
+    }
+
+    public void SetIsHurtStatus(bool isHurtStatus)
+    {
+       isHurt = isHurtStatus;
     }
 
     public void SetIsDeadStatus(bool isDeadValue)
