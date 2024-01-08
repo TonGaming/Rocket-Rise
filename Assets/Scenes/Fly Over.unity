@@ -10051,8 +10051,36 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 967406125339556973, guid: 0a4e7cdbc0ec35a49aa5e542999d8fb3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1758648427}
   m_SourcePrefab: {fileID: 100100000, guid: 0a4e7cdbc0ec35a49aa5e542999d8fb3, type: 3}
+--- !u!1 &1758648426 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 967406125339556973, guid: 0a4e7cdbc0ec35a49aa5e542999d8fb3, type: 3}
+  m_PrefabInstance: {fileID: 1758648425}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1758648427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758648426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d98cfca066ff44899bb6e231f51550, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isX: 0
+  movementVectorX: {x: 0, y: 0, z: 0}
+  isY: 1
+  movementVectorY: {x: 0, y: 20, z: 0}
+  isZ: 0
+  movementVectorZ: {x: 0, y: 0, z: 0}
+  movementFactor: 0
+  period: 10
 --- !u!1 &1765913953
 GameObject:
   m_ObjectHideFlags: 0
