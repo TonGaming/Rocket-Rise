@@ -86,8 +86,11 @@ public class CollisionHandler : MonoBehaviour
         // chỉnh lại trạng thái isSuccess sau khi đã chạm vào LandingPad
         player.SetIsSuccess(true);
 
-        // khoá di chuyển
-        player.SetIsDeadStatus(true);
+        // chỉnh lại các biến bool
+        player.SetIsDeadStatus(false);
+
+        // chỉnh lại các biến bool
+        player.SetIsHurtStatus(false);
 
         // Chạy Particle Effects Explosion 
         player.ActivateSuccessPE();

@@ -45,6 +45,7 @@ public class Player : MonoBehaviour
     {
         NoClipSwitch = false;
         isDead = false;
+        isSuccess = false;
 
         rocketRigidbody = GetComponent<Rigidbody>();
 
@@ -54,13 +55,13 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!isDead)
+        if (!isDead )
         {
             ProcessThrust();
             ProcessRotation();
 
         }
-        else if (isDead)
+        else if (isDead || isSuccess)
         {
             gameAudio.StopEngineAudio();
             mainEnginePE.Play();

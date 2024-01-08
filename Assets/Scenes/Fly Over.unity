@@ -12946,6 +12946,10 @@ PrefabInstance:
       propertyPath: landingPad
       value: 
       objectReference: {fileID: 892583119878951372}
+    - target: {fileID: 2953163653480707731, guid: c534f15ab2892b540ae3fa2f841fd4be, type: 3}
+      propertyPath: engineVolume
+      value: 0.194
+      objectReference: {fileID: 0}
     - target: {fileID: 5167032276439638708, guid: c534f15ab2892b540ae3fa2f841fd4be, type: 3}
       propertyPath: Priority
       value: 38
@@ -13090,13 +13094,6 @@ PrefabInstance:
     - target: {fileID: 6906966833558537715, guid: 4d5f79fff352dad40a7ee4ae736e425d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7681660926119217352, guid: 4d5f79fff352dad40a7ee4ae736e425d, type: 3}
-      propertyPath: m_text
-      value: 'Level 2 - Fly over
-
-
-'
       objectReference: {fileID: 0}
     - target: {fileID: 7733217830880757820, guid: 4d5f79fff352dad40a7ee4ae736e425d, type: 3}
       propertyPath: m_Name

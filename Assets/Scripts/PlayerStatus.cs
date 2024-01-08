@@ -34,13 +34,17 @@ public class PlayerStatus : MonoBehaviour
         {
             statusTextField.text = "You are hurt, now you are much slower";
         }
-        else if (player.GetIsDeadStatus())
+        else if (player.GetIsDeadStatus() && !player.GetIsSuccessStatus() && player.GetIsHurtStatus())
         {
             statusTextField.text = "You have crashed, better luck next time";
         }
-        else if (!player.GetIsHurtStatus() && !player.GetIsDeadStatus())
+        else if (!player.GetIsHurtStatus() && !player.GetIsDeadStatus() && !player.GetIsSuccessStatus())
         {
             statusTextField.text = "You are all good, now you fly like a wind";
+        }
+        else if (player.GetIsSuccessStatus() && !player.GetIsDeadStatus())
+        {
+            statusTextField.text = "You won, Congrats!";
         }
         
     }
