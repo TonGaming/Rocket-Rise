@@ -1,4 +1,4 @@
-﻿using UnityEditor.Animations;
+﻿
 using UnityEngine;
 
 public class Player : MonoBehaviour

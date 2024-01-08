@@ -22,6 +22,7 @@ public class LevelManager : MonoBehaviour
         if (Input.GetKey(KeyCode.Escape))
         {
             Application.Quit();
+            Debug.Log("Dũng mới thoát game");
         }
         else { return; }
     }
